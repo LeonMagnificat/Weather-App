@@ -1,27 +1,31 @@
 import { useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
+import icon from "../icons/cloud.svg";
 
 const Home = () => {
   const [inputSearch, setInputSearch] = useState("");
   const [citylat, setCitylat] = useState(1);
   const [citylon, setCitylon] = useState(1);
-  //   const [city, setCity] = useState(null);
+  const [city, setCity] = useState(null);
   const [weather, setWeather] = useState(null);
 
+  const d = new Date();
+  let day = d.getDay();
+  const daysArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
   const getCities = async (e) => {
-    // if (e.key === "Enter") {
-    let response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${inputSearch}&limit=1&appid=436d5eb42d8b4ef7b72bd8d989db2fc1`);
+    if (e.key === "Enter") {
+      let response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${inputSearch}&limit=1&appid=436d5eb42d8b4ef7b72bd8d989db2fc1`);
 
-    const data = await response.json();
-    // setCity(data);
+      const data = await response.json();
+      setCity(data);
 
-    setCitylat(data[0].lat);
-    setCitylon(data[0].lon);
-    console.log(data);
-    console.log(citylat);
-    console.log(citylon);
-
-    //}
+      setCitylat(data[0].lat);
+      setCitylon(data[0].lon);
+      console.log(data);
+      console.log(citylat);
+      console.log(citylon);
+    }
   };
 
   const getWeather = async () => {
@@ -92,12 +96,14 @@ const Home = () => {
           <div className="right-side">
             <div className="content">
               <div className="top-content">
-                <div className="day">Friday</div>
+                <div className="day">{daysArray[day]}</div>
                 <div className="date">{new Date().toLocaleDateString()}</div>
-                <div className="location">{inputSearch}</div>
+                {city && <div className="location">{city[0].name}</div>}
               </div>
               <div className="bottom-content">
-                <div className="icon">Icon</div>
+                <div className="icon">
+                  <img src={icon} alt="icon" />
+                </div>
                 <div className="temperature">{Math.floor(weather.main.temp - 273.15)}°C</div>
                 <div className="status">{weather.weather[0].description}</div>
               </div>
