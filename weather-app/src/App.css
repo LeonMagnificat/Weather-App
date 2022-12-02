@@ -1,38 +1,98 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700&display=swap");
+
+body {
+  background-color: #343d4b;
+  font-family: "Nunito", sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.main-container {
   min-height: 100vh;
+}
+.card-container {
+  width: 600px;
+  margin: 0 auto;
+  transform: translateY(30%);
+  position: relative;
+  display: flex;
+}
+
+.search {
+  position: absolute;
+  top: 33px;
+  left: 21px;
+  border-radius: 20px;
+}
+
+input {
+  width: 235px;
+  height: 40px;
+  top: 22px;
+  border-radius: 8px;
+  padding-inline: 10px;
+}
+.right-side-info {
+  height: 350px;
+  width: 350px;
+  padding: 30px;
+  margin-block: 55px;
+  background-color: #222831;
+  border-radius: 25px 0 0 25px;
+  color: white;
+  box-sizing: border-box;
+}
+
+.right-side {
+  width: 350px;
+  height: 450px;
+  border-radius: 25px;
+  padding: 40px;
+  box-sizing: border-box;
+  background-image: linear-gradient(152.19deg, rgba(136, 235, 239, 0.9) -0.04%, rgba(83, 91, 230, 0.9) 100%);
+}
+
+.table-info {
+  height: 70%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+  margin-block-start: 40px;
+  font-size: 20px;
+  line-height: 25px;
+  font-weight: 800;
+}
+
+.content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.top-content {
+  line-height: 25px;
+}
+
+.day {
+  font-size: 2em;
+  font-weight: 800;
+}
+
+.date,
+.location {
+  font-size: 1em;
+  margin-inline-start: 2px;
+}
+
+.location {
+  line-height: 15px;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.temperature {
+  font-size: 2em;
+  font-weight: 800;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.status {
+  font-size: 1.2em;
+  font-weight: 800;
 }

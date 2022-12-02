@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import { Table } from "react-bootstrap";
+import WeatherCard from "./WeatherCard";
 
 const Home = () => {
   const [inputSearch, setInputSearch] = useState("");
@@ -35,8 +36,8 @@ const Home = () => {
   }, [inputSearch]);
 
   return (
-    <>
-      <div>
+    <div className="card-container">
+      <div className="search">
         <input
           type="text"
           placeholder="Search here"
@@ -53,7 +54,59 @@ const Home = () => {
           </h3>
         )}
       </div>
-    </>
+
+      <div className="right-side-info">
+        <div className="table-info">
+          <Table className="table-top">
+            <tbody>
+              <tr>
+                <td>PRESSURE</td>
+
+                <td>45</td>
+              </tr>
+              <tr>
+                <td>HUMIDITY</td>
+
+                <td>54</td>
+              </tr>
+              <tr>
+                <td>WIND</td>
+                <td>6</td>
+              </tr>
+            </tbody>
+          </Table>
+
+          <Table className="table-bottom">
+            <tbody>
+              <tr>
+                <td>MIN TEMP.</td>
+
+                <td>45</td>
+              </tr>
+              <tr>
+                <td>MAX TEMP.</td>
+
+                <td>54</td>
+              </tr>
+            </tbody>
+          </Table>
+        </div>
+      </div>
+      <div className="right-side">
+        <div className="content">
+          <div className="top-content">
+            <div className="day">Day</div>
+            <div className="date">Date</div>
+            <div className="location">location</div>
+          </div>
+          <div className="bottom-content">
+            <div className="icon">Icon</div>
+            <div className="temperature">TEMP</div>
+            <div className="status">Sunny</div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
