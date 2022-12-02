@@ -9,26 +9,29 @@ body {
   min-height: 100vh;
 }
 .card-container {
-  width: 600px;
   margin: 0 auto;
   transform: translateY(30%);
   position: relative;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .search {
   position: absolute;
   top: 33px;
-  left: 21px;
+  left: 29%;
   border-radius: 20px;
 }
 
 input {
-  width: 235px;
+  width: 265px;
   height: 40px;
   top: 22px;
   border-radius: 8px;
   padding-inline: 10px;
+  border: none;
+  outline: none;
 }
 .right-side-info {
   height: 350px;
@@ -47,7 +50,9 @@ input {
   border-radius: 25px;
   padding: 40px;
   box-sizing: border-box;
-  background-image: linear-gradient(152.19deg, rgba(136, 235, 239, 0.9) -0.04%, rgba(83, 91, 230, 0.9) 100%);
+  /* //background-image: linear-gradient(152.19deg, rgba(136, 235, 239, 0.9) -0.04%, rgba(83, 91, 230, 0.9) 100%); */
+  background-image: url("https://thumbs.gfycat.com/ApprehensiveBlackandwhiteEarwig-size_restricted.gif");
+  background-size: cover;
 }
 
 .table-info {
@@ -59,6 +64,10 @@ input {
   font-size: 20px;
   line-height: 25px;
   font-weight: 800;
+}
+
+.table-bottom {
+  color: #97c0ff;
 }
 
 .content {
@@ -95,4 +104,9 @@ input {
 .status {
   font-size: 1.2em;
   font-weight: 800;
+  text-transform: capitalize;
+}
+
+.weather-info {
+  display: flex;
 }

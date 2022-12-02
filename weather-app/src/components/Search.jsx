@@ -10,17 +10,17 @@ const Home = () => {
   const [weather, setWeather] = useState(null);
 
   const getCities = async (e) => {
-    if (e.key === "Enter") {
-      let response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${inputSearch}&limit=1&appid=436d5eb42d8b4ef7b72bd8d989db2fc1`);
+    // if (e.key === "Enter") {
+    let response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${inputSearch}&limit=1&appid=436d5eb42d8b4ef7b72bd8d989db2fc1`);
 
-      const data = await response.json();
-      setCity(data);
-      setCitylat(data[0].lat);
-      setCitylon(data[0].lon);
-      console.log(data);
-      console.log(citylat);
-      console.log(citylon);
-    }
+    const data = await response.json();
+    setCity(data);
+    setCitylat(data[0].lat);
+    setCitylon(data[0].lon);
+    console.log(data);
+    console.log(citylat);
+    console.log(citylon);
+    //}
   };
 
   const getWeather = async () => {
@@ -47,65 +47,62 @@ const Home = () => {
           onKeyUp={getCities}
         />
       </div>
-      <div>
-        {weather && city && (
-          <h3>
-            it is {Math.floor(weather.main.temp - 273.15)}°C in {city[0].name}
-          </h3>
-        )}
-      </div>
 
-      <div className="right-side-info">
-        <div className="table-info">
-          <Table className="table-top">
-            <tbody>
-              <tr>
-                <td>PRESSURE</td>
+      {weather && city && (
+        <div className="weather-info">
+          <div className="right-side-info">
+            <div className="table-info">
+              <Table className="table-top">
+                <tbody>
+                  <tr>
+                    <td>PRESSURE</td>
 
-                <td>45</td>
-              </tr>
-              <tr>
-                <td>HUMIDITY</td>
+                    <td>{weather.main.pressure}hPa</td>
+                  </tr>
+                  <tr>
+                    <td>HUMIDITY</td>
 
-                <td>54</td>
-              </tr>
-              <tr>
-                <td>WIND</td>
-                <td>6</td>
-              </tr>
-            </tbody>
-          </Table>
+                    <td>{weather.main.humidity}%</td>
+                  </tr>
+                  <tr>
+                    <td>WIND</td>
+                    <td>{weather.wind.speed}m/s</td>
+                  </tr>
+                </tbody>
+              </Table>
 
-          <Table className="table-bottom">
-            <tbody>
-              <tr>
-                <td>MIN TEMP.</td>
+              <Table className="table-bottom">
+                <tbody>
+                  <tr>
+                    <td>MIN TEMP.</td>
 
-                <td>45</td>
-              </tr>
-              <tr>
-                <td>MAX TEMP.</td>
+                    <td>{Math.floor(weather.main.temp_min - 273.15)}°C</td>
+                  </tr>
+                  <tr>
+                    <td>MAX TEMP.</td>
 
-                <td>54</td>
-              </tr>
-            </tbody>
-          </Table>
-        </div>
-      </div>
-      <div className="right-side">
-        <div className="content">
-          <div className="top-content">
-            <div className="day">Day</div>
-            <div className="date">Date</div>
-            <div className="location">location</div>
+                    <td>{Math.floor(weather.main.temp_max - 273.15)}°C</td>
+                  </tr>
+                </tbody>
+              </Table>
+            </div>
           </div>
-          <div className="bottom-content">
-            <div className="icon">Icon</div>
-            <div className="temperature">TEMP</div>
-            <div className="status">Sunny</div>
+          <div className="right-side">
+            <div className="content">
+              <div className="top-content">
+                <div className="day">Friday</div>
+                <div className="date">{new Date().toLocaleDateString()}</div>
+                <div className="location">{city[0].name}</div>
+              </div>
+              <div className="bottom-content">
+                <div className="icon">Icon</div>
+                <div className="temperature">{Math.floor(weather.main.temp - 273.15)}°C</div>
+                <div className="status">{weather.weather[0].description}</div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
