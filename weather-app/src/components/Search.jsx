@@ -3,9 +3,9 @@ import { Table } from "react-bootstrap";
 import icon from "../icons/cloud.svg";
 
 const Home = () => {
-  const [inputSearch, setInputSearch] = useState("");
-  const [citylat, setCitylat] = useState(1);
-  const [citylon, setCitylon] = useState(1);
+  const [inputSearch, setInputSearch] = useState("Search here...");
+  const [citylat, setCitylat] = useState(48.8588897);
+  const [citylon, setCitylon] = useState(2.3200410217200766);
   const [city, setCity] = useState(null);
   const [weather, setWeather] = useState(null);
 
@@ -46,7 +46,7 @@ const Home = () => {
         <div className="search">
           <input
             type="text"
-            placeholder="Search here"
+            placeholder={inputSearch}
             onChange={(e) => {
               setInputSearch(e.target.value);
             }}
